@@ -1,1 +1,22 @@
+name: Build and Push docker image
+on:
+ push:
+   branches:
+     - dev-branch
+jobs:
+  Build:
+   runs-on: self-hosted 
 
+   steps:
+     - name: checkout github repo 
+       uses: actions/checkout@v2 
+     - name: docker
+       run: docker login - u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+     - name: build a docker image 
+       run: docker build -t self-hosted-image .
+     - name: build docker image 
+       run: docker run -d -p 8081:80 self-hoestd-image
+     - name: push image to docker hub 
+       run: docker tag self-hosted-image:latest betrand1999/self-hosted-image:latest
+     - name: docker push image to docker hub
+       run: docker push betrand1999/self-hosted-image:latest
