@@ -15,7 +15,7 @@ jobs:
      - name: build a docker image 
        run: docker build -t self-hosted-image .
      - name: build docker image 
-       run: docker run -d -p 8081:80 self-hosted-image
+       run: docker run -d -p 8082:80 self-hosted-image
      - name: push image to docker hub 
        run: docker tag self-hosted-image:latest betrand1999/self-hosted-image:latest
      - name: docker push image to docker hub
