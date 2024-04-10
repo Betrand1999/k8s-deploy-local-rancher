@@ -2,7 +2,7 @@ name: build docker images
 on:
  push:
    branches:
-     - dev 
+     - dev-branch
 jobs:
   build:
    runs-on: self-hosted 
