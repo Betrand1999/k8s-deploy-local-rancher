@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: my-namespace
   name: myservice 
+  namespace: my-namespace
 spec:
   selector:
     app: myapp
