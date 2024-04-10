@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .success {
+            color: green;
+        }
+        .failure {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Deployment Status</h1>
+    <div id="status"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var statusElement = document.getElementById("status");
+            var minikubeDeployed = false; // Change to true if deployed to Minikube
+            var rancherDeployed = false; // Change to true if deployed to Rancher
+
+            if (minikubeDeployed && rancherDeployed) {
+                statusElement.innerText = "Successfully deployed to Minikube cluster and Rancher!";
+                statusElement.classList.add("success");
+            } else {
+                statusElement.innerText = "Deployment failed for either Minikube cluster or Rancher.";
+                statusElement.classList.add("failure");
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
 

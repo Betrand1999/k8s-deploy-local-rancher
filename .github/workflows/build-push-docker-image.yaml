@@ -1,1 +1,23 @@
-
+name: build docker image 
+on:
+ push:
+   branches:
+     - dev 
+jobs:
+  build:
+   runs-on: self-hosted 
+   steps:
+     - name: checkout repo 
+       uses: actions/checkout@v2 
+     - name: login to docker 
+       uses: docker/login-action@v2 
+       with:
+         username: ${{ secrets.DOCKER_USERNAME}}
+         password: ${{secrets.DOCKER_PASSWORD}}
+     - name: build image 
+       run: docker build -t minikube-rancher-image .
+     - run: docker run -d --name my-rancher-docker-container -p 8080:80 minikube-rancher-image
+     - name: tag imag 
+       run: docker tag minikube-rancher-image:latest betrand1997/minikube-rancher-image:latest 
+     - name: push image 
+       run: docker push betrand1997/minikube-rancher-image:latest
