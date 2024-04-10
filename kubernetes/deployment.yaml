@@ -6,7 +6,7 @@ spec:
   selector:
     replicas: 5
     matchLabels:
-      app: mydeployment
+      app: mydeploy
   template:
     namespace: my-namespace
     metadata:
