@@ -4,6 +4,7 @@ metadata:
   name: mydeploy
   namespace: my-namespace
 spec:
+  replicas: 5
   selector:
     matchLabels:
       app: myapp
