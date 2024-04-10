@@ -1,17 +1,1 @@
-name: deploy k8s manifest to minikube
-on:
- push:
-   branches:
-     - dev-branch
-jobs:
-  Build:
-   runs-on: self-hosted 
 
-   steps:
-     - name: checkout github 
-       uses: actions/checkout@v2 
-     - name: apply kubernets manifest
-       run: |
-        kubectl apply -f ./kubernetes/namespace.yaml
-        kubectl apply -f ./kubernetes/deployment.yaml 
-        kubectl apply -f ./kubernetes/service.yaml 
