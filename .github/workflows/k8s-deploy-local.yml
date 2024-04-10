@@ -1,1 +1,19 @@
-
+name: my deploy to minikube 
+on: 
+ push:
+   branches:
+     - dev-branch 
+jobs:
+  build:
+   runs-on: self-hosted 
+   steps:
+     - name: checkout repo 
+       uses: actions/checkout@v2 
+     - name: deploy 
+       run: | 
+        kubectl apply -f ./kubernetes/namespace.yaml 
+        kubectl apply -f ./kubernetes/deployment.yaml 
+        kubectl apply -f ./kubernetes/service.yaml 
+        kubectl get deploy -n my-namespace 
+        kubectl get service -n my-namespace 
+        echo " successfully deploy to minikube "
